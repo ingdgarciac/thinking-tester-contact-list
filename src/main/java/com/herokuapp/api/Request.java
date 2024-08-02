@@ -15,13 +15,11 @@ import io.restassured.http.Method;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 import java.util.Objects;
-import org.awaitility.core.ConditionFactory;
 
 /** Class to model RestAssured request. */
 public class Request {
 
   private final RequestSpecification requestSpecification;
-  private final ConditionFactory await = null;
 
   /** Constructor of the class. */
   public Request() {
@@ -61,7 +59,7 @@ public class Request {
   }
 
   private Reply sendRequest(Method method) {
-    ValidatableResponse response = (ValidatableResponse) this.requestSpecification.request().then();
+    ValidatableResponse response = this.requestSpecification.request(method).then();
 
     if (!Objects.isNull(response) && !Objects.isNull(response.extract())) {
       return new Reply(response.extract().response());

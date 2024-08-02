@@ -1,5 +1,6 @@
 package com.herokuapp.hooks;
 
+import static com.herokuapp.api.services.UsersService.deleteUser;
 import static org.testng.Assert.assertTrue;
 
 import com.herokuapp.ui.driver.Device;
@@ -24,6 +25,8 @@ public class Hooks {
   @After
   public void finishTest(Scenario scenario) {
     log.info("Ending scenario: {}", scenario.getName());
+    log.info("Disposing data");
+    deleteUser();
     Device.getDriver().close();
   }
 }
