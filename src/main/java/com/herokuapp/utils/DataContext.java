@@ -10,7 +10,7 @@ import lombok.experimental.UtilityClass;
 
 /** Utility class to save context user info. */
 @UtilityClass
-public final class UserInfo {
+public final class DataContext {
 
   @Getter @Setter private static NewUserResponse user;
   @Getter @Setter private static String password;

@@ -1,8 +1,11 @@
 package com.herokuapp.ui.tasks;
 
+import static com.herokuapp.utils.DeviceActions.click;
+import static com.herokuapp.utils.DeviceActions.sendKeys;
+
 import com.herokuapp.api.dtos.ContactDto;
 import com.herokuapp.ui.screens.AddContactScreen;
-import com.herokuapp.utils.UserInfo;
+import com.herokuapp.utils.DataContext;
 import io.qameta.allure.Step;
 import net.datafaker.Faker;
 import net.datafaker.providers.base.Address;
@@ -15,18 +18,18 @@ public class AddContactTasks extends AddContactScreen {
   @Step("Add new contact info data")
   public AddContactTasks setNewContactInfo() {
     ContactDto contact = getContactInfo();
-    getInputFirstName().sendKeys(contact.getFirstName());
-    getInputLastName().sendKeys(contact.getLastName());
-    getInputBirthDate().sendKeys(contact.getDateOfBirth());
-    getInputEmail().sendKeys(contact.getEmail());
-    getInputPhone().sendKeys(contact.getPhone());
-    getInputStreet1().sendKeys(contact.getAddress1());
-    getInputStreet2().sendKeys(contact.getAddress2());
-    getInputCity().sendKeys(contact.getCity());
-    getInputState().sendKeys(contact.getProvince());
-    getInputPostalCode().sendKeys(contact.getPostalCode());
-    getInputCountry().sendKeys(contact.getCountry());
-    UserInfo.getContacts().add(contact);
+    sendKeys(getInputFirstName(), contact.getFirstName());
+    sendKeys(getInputLastName(), contact.getLastName());
+    sendKeys(getInputBirthDate(), contact.getDateOfBirth());
+    sendKeys(getInputEmail(), contact.getEmail());
+    sendKeys(getInputPhone(), contact.getPhone());
+    sendKeys(getInputStreet1(), contact.getAddress1());
+    sendKeys(getInputStreet2(), contact.getAddress2());
+    sendKeys(getInputCity(), contact.getCity());
+    sendKeys(getInputState(), contact.getProvince());
+    sendKeys(getInputPostalCode(), contact.getPostalCode());
+    sendKeys(getInputCountry(), contact.getCountry());
+    DataContext.getContacts().add(contact);
     return this;
   }
 
@@ -50,6 +53,6 @@ public class AddContactTasks extends AddContactScreen {
 
   @Step("Submit the contact information")
   public void clickOnSubmit() {
-    getSubmitButton().click();
+    click(getSubmitButton(), "Submit button");
   }
 }

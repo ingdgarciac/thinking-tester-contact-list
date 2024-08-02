@@ -6,7 +6,7 @@ import static com.herokuapp.Constants.UNDERSCORE;
 import com.herokuapp.api.dtos.NewUserRequest;
 import com.herokuapp.api.dtos.NewUserResponse;
 import com.herokuapp.api.services.UsersService;
-import com.herokuapp.utils.UserInfo;
+import com.herokuapp.utils.DataContext;
 import io.qameta.allure.Step;
 import lombok.experimental.UtilityClass;
 import net.datafaker.Faker;
@@ -20,8 +20,8 @@ public class UsersTasks {
   public static void createNewUser() {
     NewUserRequest userRequest = getNewUserRequest();
     NewUserResponse user = UsersService.AddUser(userRequest);
-    UserInfo.setUser(user);
-    UserInfo.setPassword(userRequest.getPassword());
+    DataContext.setUser(user);
+    DataContext.setPassword(userRequest.getPassword());
   }
 
   private NewUserRequest getNewUserRequest() {

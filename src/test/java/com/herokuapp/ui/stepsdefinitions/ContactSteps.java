@@ -6,7 +6,7 @@ import com.herokuapp.ui.questions.LoginQuestions;
 import com.herokuapp.ui.tasks.AddContactTasks;
 import com.herokuapp.ui.tasks.ContactListTasks;
 import com.herokuapp.ui.tasks.LoginTasks;
-import com.herokuapp.utils.UserInfo;
+import com.herokuapp.utils.DataContext;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -24,8 +24,8 @@ public class ContactSteps {
   public void loginProcessIsCompletedSuccessfully() {
     loginQuestions.validateScreen();
     loginTasks
-        .setUserName(UserInfo.getUser().getUser().getEmail())
-        .setPassword(UserInfo.getPassword())
+        .setUserName(DataContext.getUser().getUser().getEmail())
+        .setPassword(DataContext.getPassword())
         .clickOnSubmitButton();
     contactListQuestions.validateScreen();
   }
@@ -37,8 +37,8 @@ public class ContactSteps {
     addContactTasks.setNewContactInfo().clickOnSubmit();
   }
 
-  @Then("the created contact appears in the contact list screen")
-  public void theCreatedContactAppearsInTheContactListScreen() {
+  @Then("the created contact appears")
+  public void theCreatedContactAppears() {
     contactListQuestions.validateNewContact();
     contactListQuestions.validateContactInfo();
   }

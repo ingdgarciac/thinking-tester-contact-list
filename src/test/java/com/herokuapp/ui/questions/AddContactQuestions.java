@@ -1,5 +1,6 @@
 package com.herokuapp.ui.questions;
 
+import static com.herokuapp.enums.Timeout.MEDIUM_TIME;
 import static com.herokuapp.utils.WaitActions.waitUntilElementIsVisible;
 
 import com.herokuapp.ui.screens.AddContactScreen;
@@ -10,7 +11,7 @@ public class AddContactQuestions extends AddContactScreen {
 
   @Step("Validate add contact screen visibility")
   public void validateScreen() {
-    waitUntilElementIsVisible(getInputFirstName(), 5);
+    waitUntilElementIsVisible(getInputFirstName(), MEDIUM_TIME);
     Assertion.softAssert("First name input is visible", getInputFirstName().isDisplayed(), true);
     Assertion.softAssert("Last name input is visible", getInputFirstName().isDisplayed(), true);
     Assertion.softAssert("Date of birth input is visible", getInputFirstName().isDisplayed(), true);

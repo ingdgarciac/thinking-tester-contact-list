@@ -2,13 +2,14 @@ package com.herokuapp.ui.questions;
 
 import static com.herokuapp.enums.PageText.HEADER_CONTACT;
 import static com.herokuapp.enums.PageText.SUBTITLE_CONTACT;
+import static com.herokuapp.enums.Timeout.MEDIUM_TIME;
 import static com.herokuapp.utils.WaitActions.waitUntilElementIsVisible;
 import static org.apache.commons.lang3.StringUtils.SPACE;
 
 import com.herokuapp.api.dtos.ContactDto;
 import com.herokuapp.ui.screens.ContactListScreen;
 import com.herokuapp.utils.Assertion;
-import com.herokuapp.utils.UserInfo;
+import com.herokuapp.utils.DataContext;
 import io.qameta.allure.Step;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class ContactListQuestions extends ContactListScreen {
 
   @Step("Validate contact list screen")
   public void validateScreen() {
-    waitUntilElementIsVisible(getHeaderTitle(), 5);
+    waitUntilElementIsVisible(getHeaderTitle(), MEDIUM_TIME);
     Assertion.softAssert("Header title is visible", getHeaderTitle().isDisplayed(), true);
     Assertion.softAssert("Header title text", getHeaderTitle().getText(), HEADER_CONTACT.getText());
     Assertion.softAssert("Subtitle is visible", getSubtitle().isDisplayed(), true);
@@ -28,14 +29,14 @@ public class ContactListQuestions extends ContactListScreen {
 
   @Step("Validate new contact")
   public void validateNewContact() {
-    waitUntilElementIsVisible(getContactTable(), 5);
+    waitUntilElementIsVisible(getContactTable(), MEDIUM_TIME);
     Assertion.softAssert("Contacts table is visible", getContactTable().isDisplayed(), true);
     Assertion.hardAssert("Contacts size is 1", getContactsRows().size(), 1);
   }
 
   @Step("Validate contact info")
   public void validateContactInfo() {
-    List<ContactDto> contacts = UserInfo.getContacts();
+    List<ContactDto> contacts = DataContext.getContacts();
     for (int i = 0; i < contacts.size(); i++) {
       String fullName =
           contacts.get(i).getFirstName().concat(SPACE).concat(contacts.get(i).getLastName());

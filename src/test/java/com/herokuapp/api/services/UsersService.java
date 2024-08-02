@@ -12,7 +12,7 @@ import com.herokuapp.api.Reply;
 import com.herokuapp.api.Request;
 import com.herokuapp.api.dtos.NewUserRequest;
 import com.herokuapp.api.dtos.NewUserResponse;
-import com.herokuapp.utils.UserInfo;
+import com.herokuapp.utils.DataContext;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
@@ -43,7 +43,7 @@ public class UsersService {
         new Request()
             .baseUri(PROJECT_URL)
             .basePath(PATH_USERS + PATH_ME)
-            .bearerAuth(UserInfo.getUser().getToken())
+            .bearerAuth(DataContext.getUser().getToken())
             .contentType(JSON)
             .delete();
 
