@@ -16,8 +16,8 @@ Feature: Contacts
     When the user creates a new contact
     Then the created contact appears
     When the user taps on created contact
-    Then the contact contact details appears
-    When the user iniates the edition process
+    Then the contact details appears
+    When the user initiates the edition process
     Then the contact is update it
     When the user taps on created contact
     Then the contact details appears

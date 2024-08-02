@@ -19,4 +19,10 @@ public class DeviceActions {
   public static void sendKeys(WebElement webElement, String keys) {
     webElement.sendKeys(keys);
   }
+
+  @Step("Clear '{element}'")
+  public static WebElement clear(WebElement webElement, String element) {
+    webElement.clear();
+    return webElement;
+  }
 }

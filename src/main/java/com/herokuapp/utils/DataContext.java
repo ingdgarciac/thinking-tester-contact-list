@@ -15,4 +15,11 @@ public final class DataContext {
   @Getter @Setter private static NewUserResponse user;
   @Getter @Setter private static String password;
   @Getter @Setter private static List<ContactDto> contacts = new ArrayList<>();
+
+  /** Dispose the test data. */
+  public static void disposeData() {
+    user = null;
+    password = null;
+    contacts = new ArrayList<>();
+  }
 }

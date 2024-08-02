@@ -18,6 +18,9 @@ public class ContactListQuestions extends ContactListScreen {
   @Step("Validate contact list screen")
   public void validateScreen() {
     waitUntilElementIsVisible(getHeaderTitle(), MEDIUM_TIME);
+    waitUntilElementIsVisible(getSubtitle(), MEDIUM_TIME);
+    waitUntilElementIsVisible(getAddContactButton(), MEDIUM_TIME);
+    waitUntilElementIsVisible(getContactTable(), MEDIUM_TIME);
     Assertion.softAssert("Header title is visible", getHeaderTitle().isDisplayed(), true);
     Assertion.softAssert("Header title text", getHeaderTitle().getText(), HEADER_CONTACT.getText());
     Assertion.softAssert("Subtitle is visible", getSubtitle().isDisplayed(), true);

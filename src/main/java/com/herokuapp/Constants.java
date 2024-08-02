@@ -26,4 +26,6 @@ public class Constants {
   public static final String PATH_USERS = "/users";
 
   public static final String PATH_ME = "/me";
+
+  public static final String PATH_LOGIN = "/login";
 }

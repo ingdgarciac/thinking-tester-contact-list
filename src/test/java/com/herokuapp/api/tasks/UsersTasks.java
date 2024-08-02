@@ -2,7 +2,10 @@ package com.herokuapp.api.tasks;
 
 import static com.herokuapp.Constants.EMAIL_DOMAIN;
 import static com.herokuapp.Constants.UNDERSCORE;
+import static com.herokuapp.api.services.UsersService.deleteUser;
+import static com.herokuapp.api.services.UsersService.loginUser;
 
+import com.herokuapp.api.dtos.LoginRequest;
 import com.herokuapp.api.dtos.NewUserRequest;
 import com.herokuapp.api.dtos.NewUserResponse;
 import com.herokuapp.api.services.UsersService;
@@ -35,5 +38,24 @@ public class UsersTasks {
         .email(email)
         .password(password)
         .build();
+  }
+
+  @Step("Login in backend")
+  public static void login() {
+    DataContext.setUser(loginUser(getLoginRequest()));
+  }
+
+  private LoginRequest getLoginRequest() {
+    return LoginRequest.builder()
+        .email(DataContext.getUser().getUser().getEmail())
+        .password(DataContext.getPassword())
+        .build();
+  }
+
+  @Step("Dispose data")
+  public static void disposeData() {
+    login();
+    deleteUser();
+    DataContext.disposeData();
   }
 }

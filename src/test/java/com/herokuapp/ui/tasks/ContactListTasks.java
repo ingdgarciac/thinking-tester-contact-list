@@ -11,4 +11,17 @@ public class ContactListTasks extends ContactListScreen {
   public void clickOnAddNewContact() {
     click(getAddContactButton(), "Add contact button");
   }
+
+  @Step("Click on available contact")
+  public void clickOnAvailableContact() {
+    getFullNameRows().stream()
+        .findFirst()
+        .orElseThrow(() -> new RuntimeException("Element not found"))
+        .click();
+  }
+
+  @Step("Click on logout button")
+  public void clickOnLogout() {
+    click(getLogout(), "Logout button");
+  }
 }
