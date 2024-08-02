@@ -36,12 +36,12 @@ local machine:
 3. **Install Allure**
     - Follow the instructions from
       the [Allure documentation](https://allurereport.org/docs/install/)
-4. Build and test
+4. **Build and test**
     - For build and test, execute with TestNG the runner class in the repo found
       in `src/test/java/com.herokuapp/runner/RunnerTest`, by default the test run in Chrome browser
       if you want to change it, change the project.browser property
       in `test/resources/project.properties` file
-5. Generate the report
+5. **Generate the report**
     - After the execution, the project creates the `allure-results` folder. In a command line with
       the
       repo location, run the command `allure serve allure-results` and automatically a browser will
@@ -49,3 +49,6 @@ local machine:
 
 ![Allure_Summary](resources/allure_summary.png)
 ![Allure_Results](resources/allure_test.png)
+
+6. **Test feature**
+    - The test is located in `src/test/resources/features` in Gherkin language
